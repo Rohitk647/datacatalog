@@ -1,4 +1,4 @@
-package com.sidgs.catalogservice;
+package com.sidgs;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

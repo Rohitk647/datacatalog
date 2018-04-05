@@ -1,10 +1,11 @@
-package com.sidgs.catalogservice.model;
+package com.sidgs.model;
 
 import java.util.Date;
 
 public class CatalogModel {
 
-        private String id;
+        private int id;
+        private String instance_id;
         private String instance_type;
         private String instance_owner;
         private String expirationDate;
@@ -18,11 +19,19 @@ public class CatalogModel {
         private String cloud;
         private String status;
 
-        public String getId() {
+    public String getInstance_id() {
+        return instance_id;
+    }
+
+    public void setInstance_id(String instance_id) {
+        this.instance_id = instance_id;
+    }
+
+        public int getId() {
             return id;
         }
 
-        public void setId(String id) {
+        public void setId(int id) {
             this.id = id;
         }
 
