@@ -1,9 +1,14 @@
 package com.sidgs.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Date;
 
+@Document(collection = "catalog")
 public class CatalogModel {
 
+        @Id
         private int id;
         private String instance_id;
         private String instance_type;
@@ -18,6 +23,25 @@ public class CatalogModel {
         private String keyName;
         private String cloud;
         private String status;
+
+    public CatalogModel(int id, String instance_id, String instance_type, String instance_owner, String expirationDate, String terminationDate, String purpose, String project, String environment, String ip_address, String ip_public, String keyName, String cloud, String status) {
+        this.id = id;
+        this.instance_id = instance_id;
+        this.instance_type = instance_type;
+        this.instance_owner = instance_owner;
+        this.expirationDate = expirationDate;
+        this.terminationDate = terminationDate;
+        this.purpose = purpose;
+        this.project = project;
+        this.environment = environment;
+        this.ip_address = ip_address;
+        this.ip_public = ip_public;
+        this.keyName = keyName;
+        this.cloud = cloud;
+        this.status = status;
+    }
+
+    public CatalogModel(){}
 
     public String getInstance_id() {
         return instance_id;
@@ -130,4 +154,24 @@ public class CatalogModel {
         public void setStatus(String status) {
             this.status = status;
         }
+
+    @Override
+    public String toString() {
+        return "CatalogModel{" +
+                "id=" + id +
+                ", instance_id='" + instance_id + '\'' +
+                ", instance_type='" + instance_type + '\'' +
+                ", instance_owner='" + instance_owner + '\'' +
+                ", expirationDate='" + expirationDate + '\'' +
+                ", terminationDate='" + terminationDate + '\'' +
+                ", purpose='" + purpose + '\'' +
+                ", project='" + project + '\'' +
+                ", environment='" + environment + '\'' +
+                ", ip_address='" + ip_address + '\'' +
+                ", ip_public='" + ip_public + '\'' +
+                ", keyName='" + keyName + '\'' +
+                ", cloud='" + cloud + '\'' +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }
