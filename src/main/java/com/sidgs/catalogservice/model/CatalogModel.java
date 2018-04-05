@@ -1,4 +1,6 @@
-package com.sidgs.catalogservice.com.sidgs.catalogservice.model;
+package com.sidgs.catalogservice.model;
+
+import java.util.Date;
 
 public class CatalogModel {
 
