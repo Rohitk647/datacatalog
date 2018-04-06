@@ -12,13 +12,10 @@ import java.util.List;
 @Service
 public class CatalogService {
 
-
     @Autowired
     DataRepository dataRepository;
 
- public String addCatalog(){
-
-     CatalogModel catalogModel=new CatalogModel(2,"instance2","training","sidglobal","4/5/18","4/6/18","training","catalog","dev","10.0.0.0","0.0.0.0.0","pract","aws","active");
+ public String addCatalog(CatalogModel catalogModel){
 
      dataRepository.save(catalogModel);
      return "success";

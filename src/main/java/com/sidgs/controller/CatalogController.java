@@ -5,6 +5,7 @@ import com.sidgs.repository.DataRepository;
 import com.sidgs.service.CatalogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,9 +20,9 @@ public class CatalogController {
     CatalogService catalogService;
 
     @RequestMapping(value= "/addcatalog",method = RequestMethod.POST)
-
-    void addCatalog() {
-        catalogService.addCatalog();
+    void addCatalog(@RequestBody CatalogModel catalogModel) {
+        System.out.println(catalogModel.getCloud());
+        catalogService.addCatalog(catalogModel);
     }
 
     @RequestMapping(value= "/getall",method = RequestMethod.GET)

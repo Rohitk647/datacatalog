@@ -10,5 +10,4 @@ import org.springframework.stereotype.Service;
 @Component
 public interface DataRepository extends MongoRepository<CatalogModel, Integer> {
 
-
 }
