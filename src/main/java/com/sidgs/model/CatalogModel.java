@@ -1,14 +1,17 @@
 package com.sidgs.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+//import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
 
-@Document(collection = "catalog")
+@Entity
 public class CatalogModel {
-
         @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
         private int id;
         private String instance_id;
         private String instance_type;

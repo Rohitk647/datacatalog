@@ -3,11 +3,7 @@ package com.sidgs.service;
 import com.sidgs.model.CatalogModel;
 import com.sidgs.repository.DataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class CatalogService {
@@ -22,7 +18,7 @@ public class CatalogService {
 
  }
 
- public List<CatalogModel> getall(){
+ public Iterable<CatalogModel> getall(){
      return dataRepository.findAll();
  }
 

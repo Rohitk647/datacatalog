@@ -27,7 +27,7 @@ public class CatalogController {
 
     @RequestMapping(value= "/getall",method = RequestMethod.GET)
     @ResponseBody
-    List<CatalogModel> getall(){
+    Iterable<CatalogModel> getall(){
         return catalogService.getall();
     }
 
