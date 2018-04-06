@@ -19,7 +19,7 @@ public class CatalogService {
  }
 
  public Iterable<CatalogModel> getall(){
-     return dataRepository.findAll();
+      return dataRepository.findAll();
  }
 
 }
