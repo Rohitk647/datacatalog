@@ -10,6 +10,10 @@ import sun.awt.SunHints;
 
 import java.util.Optional;
 
+/**
+ *  Performing CRUD operations on DB
+ */
+
 @Component
 public interface DataRepository extends CrudRepository<CatalogModel,Integer> {
 

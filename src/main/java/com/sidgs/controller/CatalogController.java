@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Controller class
+ */
 @Controller
 @RequestMapping("/")
 public class CatalogController {
@@ -20,7 +23,7 @@ public class CatalogController {
 
 
     /**
-     * Controller to add an instance
+     * method to add an instance
      * @param catalogModel
      */
     @RequestMapping(value= "catalog",method = RequestMethod.POST)
@@ -31,7 +34,7 @@ public class CatalogController {
     }
 
     /**
-     * Controller to return all instances
+     * method to view all instances
      * @return
      */
     @RequestMapping(value= "/catalogs",method = RequestMethod.GET)
@@ -42,9 +45,8 @@ public class CatalogController {
 
 
     /**
-     *Controller to modify the tags of existing instance
+     * method to update the existing instance
      * @param catalogModel
-     * @return
      */
     @RequestMapping(value= "/catalog",method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
@@ -52,6 +54,12 @@ public class CatalogController {
        catalogService.modifyInstance(catalogModel);
     }
 
+
+    /**
+     * method to update the status of the existing instance
+     * @param instance_id
+     * @param status
+     */
     @RequestMapping(value = "modify/{instance_id}/status/{status}",method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     void modifyStatus(@PathVariable ("instance_id") String instance_id,@PathVariable ("status") String status){
