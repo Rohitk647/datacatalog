@@ -4,31 +4,52 @@ import com.sidgs.model.CatalogModel;
 import com.sidgs.repository.DataRepository;
 import com.sidgs.service.CatalogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
-@RequestMapping("/catalog")
+@RequestMapping("/")
 public class CatalogController {
 
     @Autowired
     CatalogService catalogService;
 
-    @RequestMapping(value= "/addcatalog",method = RequestMethod.POST)
+    /**
+     * Controller to add an instance
+     * @param catalogModel
+     */
+    @RequestMapping(value= "catalog",method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
     void addCatalog(@RequestBody CatalogModel catalogModel) {
-        System.out.println(catalogModel.getCloud());
         catalogService.addCatalog(catalogModel);
+
     }
 
-    @RequestMapping(value= "/getall",method = RequestMethod.GET)
+    /**
+     * Controller to return all instances
+     * @return
+     */
+    @RequestMapping(value= "/catalogs",method = RequestMethod.GET)
     @ResponseBody
-    Iterable<CatalogModel> getall(){
-        return catalogService.getall();
+    Iterable<CatalogModel> getAll(){
+        return catalogService.getAll();
+    }
+
+
+    /**
+     *Controller to modify the tags of existing instance
+     * @param catalogModel
+     * @return
+     */
+    @RequestMapping(value= "/catalog",method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    Iterable<CatalogModel> getData(@RequestBody CatalogModel catalogModel){
+        System.out.println(catalogService.getInstance(catalogModel.getInstance_id()));
+        return catalogService.getInstance(catalogModel.getInstance_id());
     }
 
 }

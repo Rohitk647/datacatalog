@@ -8,16 +8,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
+
+/**
+ * catalog model
+ */
 @Entity
 public class CatalogModel {
-        @Id
+
+         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         private int id;
         private String instance_id;
         private String instance_type;
         private String instance_owner;
-        private String expirationDate;
-        private String terminationDate;
+        private Date expirationDate;
+        private Date terminationDate;
         private String purpose;
         private String project;
         private String environment;
@@ -27,40 +32,20 @@ public class CatalogModel {
         private String cloud;
         private String status;
 
-    public CatalogModel(int id, String instance_id, String instance_type, String instance_owner, String expirationDate, String terminationDate, String purpose, String project, String environment, String ip_address, String ip_public, String keyName, String cloud, String status) {
-        this.id = id;
-        this.instance_id = instance_id;
-        this.instance_type = instance_type;
-        this.instance_owner = instance_owner;
-        this.expirationDate = expirationDate;
-        this.terminationDate = terminationDate;
-        this.purpose = purpose;
-        this.project = project;
-        this.environment = environment;
-        this.ip_address = ip_address;
-        this.ip_public = ip_public;
-        this.keyName = keyName;
-        this.cloud = cloud;
-        this.status = status;
-    }
 
-    public CatalogModel(){}
 
-    public String getInstance_id() {
+
+         public int getId() {return id;}
+
+         public void setId(int id) {this.id = id;}
+
+         public String getInstance_id() {
         return instance_id;
     }
 
-    public void setInstance_id(String instance_id) {
+         public void setInstance_id(String instance_id) {
         this.instance_id = instance_id;
     }
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
 
         public String getInstance_type() {
             return instance_type;
@@ -78,19 +63,19 @@ public class CatalogModel {
             this.instance_owner = instance_owner;
         }
 
-        public String getExpirationDate() {
+        public Date getExpirationDate() {
             return expirationDate;
         }
 
-        public void setExpirationDate(String expirationDate) {
+        public void setExpirationDate(Date expirationDate) {
             this.expirationDate = expirationDate;
         }
 
-        public String getTerminationDate() {
+        public Date getTerminationDate() {
             return terminationDate;
         }
 
-        public void setTerminationDate(String terminationDate) {
+        public void setTerminationDate(Date terminationDate) {
             this.terminationDate = terminationDate;
         }
 
@@ -161,7 +146,6 @@ public class CatalogModel {
     @Override
     public String toString() {
         return "CatalogModel{" +
-                "id=" + id +
                 ", instance_id='" + instance_id + '\'' +
                 ", instance_type='" + instance_type + '\'' +
                 ", instance_owner='" + instance_owner + '\'' +

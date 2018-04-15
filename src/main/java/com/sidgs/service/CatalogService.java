@@ -5,6 +5,9 @@ import com.sidgs.repository.DataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * catalog service class
+ */
 @Service
 public class CatalogService {
 
@@ -18,8 +21,12 @@ public class CatalogService {
 
  }
 
- public Iterable<CatalogModel> getall(){
+ public Iterable<CatalogModel> getAll(){
       return dataRepository.findAll();
+ }
+
+ public Iterable<CatalogModel> getInstance(String instance_id){
+    return dataRepository.findByInstanceId(instance_id);
  }
 
 }
