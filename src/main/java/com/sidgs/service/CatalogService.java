@@ -14,10 +14,9 @@ public class CatalogService {
     @Autowired
     DataRepository dataRepository;
 
- public String addCatalog(CatalogModel catalogModel){
+ public void addCatalog(CatalogModel catalogModel){
 
      dataRepository.save(catalogModel);
-     return "success";
 
  }
 
@@ -25,7 +24,7 @@ public class CatalogService {
       return dataRepository.findAll();
  }
 
- public Iterable<CatalogModel> getInstance(String instance_id){
+ public int getInstance(String instance_id){
     return dataRepository.findByInstanceId(instance_id);
  }
 

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/")
@@ -16,6 +17,9 @@ public class CatalogController {
 
     @Autowired
     CatalogService catalogService;
+
+    @Autowired
+    DataRepository dataRepository;
 
     /**
      * Controller to add an instance
@@ -47,9 +51,13 @@ public class CatalogController {
     @RequestMapping(value= "/catalog",method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    Iterable<CatalogModel> getData(@RequestBody CatalogModel catalogModel){
-        System.out.println(catalogService.getInstance(catalogModel.getInstance_id()));
-        return catalogService.getInstance(catalogModel.getInstance_id());
+    void getData(@RequestBody CatalogModel catalogModel){
+
+        CatalogModel catalogModelUpdate= dataRepository.findById(catalogService.getInstance(catalogModel.getInstance_id()));
+        System.out.println(catalogModelUpdate);
+        catalogModelUpdate.setCloud(catalogModel.getCloud());
+        dataRepository.save(catalogModelUpdate);
+
     }
 
 }

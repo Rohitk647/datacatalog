@@ -2,11 +2,13 @@ package com.sidgs.model;
 
 //import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.data.jpa.repository.Temporal;
+
+import javax.persistence.*;
 import java.util.Date;
+
+import static javax.persistence.TemporalType.DATE;
 
 
 /**
@@ -21,7 +23,9 @@ public class CatalogModel {
         private String instance_id;
         private String instance_type;
         private String instance_owner;
+        @JsonFormat(pattern = "dd/mm/yyyy")
         private Date expirationDate;
+        @JsonFormat(pattern = "dd/mm/yyyy")
         private Date terminationDate;
         private String purpose;
         private String project;
