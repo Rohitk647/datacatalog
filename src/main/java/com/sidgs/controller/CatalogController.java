@@ -18,8 +18,6 @@ public class CatalogController {
     @Autowired
     CatalogService catalogService;
 
-    @Autowired
-    DataRepository dataRepository;
 
     /**
      * Controller to add an instance
@@ -50,14 +48,15 @@ public class CatalogController {
      */
     @RequestMapping(value= "/catalog",method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    void getData(@RequestBody CatalogModel catalogModel){
-
-        CatalogModel catalogModelUpdate= dataRepository.findById(catalogService.getInstance(catalogModel.getInstance_id()));
-        System.out.println(catalogModelUpdate);
-        catalogModelUpdate.setCloud(catalogModel.getCloud());
-        dataRepository.save(catalogModelUpdate);
-
+    void updateInstance(@RequestBody CatalogModel catalogModel){
+       catalogService.modifyInstance(catalogModel);
     }
+
+    @RequestMapping(value = "modify/{instance_id}/status/{status}",method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    void modifyStatus(@PathVariable ("instance_id") String instance_id,@PathVariable ("status") String status){
+        catalogService.modifyStatus(instance_id,status);
+    }
+
 
 }
