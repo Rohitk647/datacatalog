@@ -15,7 +15,7 @@ import java.util.Optional;
  * Controller class
  */
 @Controller
-@RequestMapping("/")
+@RequestMapping("/catalogs")
 public class CatalogController {
 
     @Autowired
@@ -26,18 +26,17 @@ public class CatalogController {
      * method to add an instance
      * @param catalogModel
      */
-    @RequestMapping(value= "catalog",method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     void addCatalog(@RequestBody CatalogModel catalogModel) {
         catalogService.addCatalog(catalogModel);
-
     }
 
     /**
      * method to view all instances
      * @return
      */
-    @RequestMapping(value= "/catalogs",method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     Iterable<CatalogModel> getAll(){
         return catalogService.getAll();
@@ -48,7 +47,7 @@ public class CatalogController {
      * method to update the existing instance
      * @param catalogModel
      */
-    @RequestMapping(value= "/catalog",method = RequestMethod.PUT)
+    @RequestMapping(method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
     void updateInstance(@RequestBody CatalogModel catalogModel){
        catalogService.modifyInstance(catalogModel);
@@ -60,11 +59,10 @@ public class CatalogController {
      * @param instance_id
      * @param status
      */
-    @RequestMapping(value = "modify/{instance_id}/status/{status}",method = RequestMethod.GET)
+    @RequestMapping(value = "/{instance_id}/status/{status}",method = RequestMethod.PATCH)
     @ResponseStatus(HttpStatus.OK)
     void modifyStatus(@PathVariable ("instance_id") String instance_id,@PathVariable ("status") String status){
         catalogService.modifyStatus(instance_id,status);
     }
-
 
 }

@@ -1,6 +1,7 @@
 package com.sidgs.service;
 
 import com.sidgs.model.CatalogModel;
+import com.sidgs.model.TagsModel;
 import com.sidgs.repository.DataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,6 @@ public class CatalogService {
      * @param catalogModel
      */
  public void addCatalog(CatalogModel catalogModel){
-
      dataRepository.save(catalogModel);
  }
 
@@ -47,12 +47,7 @@ public class CatalogService {
      */
  public void modifyInstance(CatalogModel catalogModel){
      CatalogModel catalogModelUpdate= dataRepository.findById(getInstance(catalogModel.getInstance_id()));
-     catalogModelUpdate.setTerminationDate(catalogModel.getTerminationDate());
-     catalogModelUpdate.setInstance_owner(catalogModel.getInstance_owner());
-     catalogModelUpdate.setExpirationDate(catalogModel.getExpirationDate());
-     catalogModelUpdate.setPurpose(catalogModel.getPurpose());
-     catalogModelUpdate.setProject(catalogModel.getProject());
-     catalogModelUpdate.setEnvironment(catalogModel.getEnvironment());
+     catalogModelUpdate.setTags(catalogModel.getTags());
      dataRepository.save(catalogModelUpdate);
  }
 
@@ -65,7 +60,5 @@ public class CatalogService {
      CatalogModel modifyStatus =dataRepository.findById(getInstance(id));
      modifyStatus.setStatus(status);
      dataRepository.save(modifyStatus);
-
-
  }
 }

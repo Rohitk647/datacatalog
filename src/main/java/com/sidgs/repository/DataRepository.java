@@ -25,7 +25,6 @@ public interface DataRepository extends CrudRepository<CatalogModel,Integer> {
      */
 
     @Query(value = "SELECT id FROM catalog_model where instance_id = :instance_id",nativeQuery = true)
-
     int findByInstanceId(@Param("instance_id") String instance_id);
 
     @Query(value = "SELECT * FROM catalog_model WHERE id =:id",nativeQuery = true)

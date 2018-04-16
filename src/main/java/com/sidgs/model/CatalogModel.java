@@ -1,12 +1,5 @@
 package com.sidgs.model;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.data.jpa.repository.Temporal;
-
 import javax.persistence.*;
-import java.util.Date;
-
-import static javax.persistence.TemporalType.DATE;
 
 
 /**
@@ -15,152 +8,89 @@ import static javax.persistence.TemporalType.DATE;
 @Entity
 public class CatalogModel {
 
-         @Id
+        @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         private int id;
+        @Column(unique = true)
         private String instance_id;
         private String instance_type;
-        private String instance_owner;
-        @JsonFormat(pattern = "dd/mm/yyyy")
-        private Date expirationDate;
-        @JsonFormat(pattern = "dd/mm/yyyy")
-        private Date terminationDate;
-        private String purpose;
-        private String project;
-        private String environment;
         private String ip_address;
         private String ip_public;
         private String keyName;
         private String cloud;
         private String status;
+        @Embedded
+        private TagsModel tags;
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
-
-         public int getId() {return id;}
-
-         public void setId(int id) {this.id = id;}
-
-         public String getInstance_id() {
+    public String getInstance_id() {
         return instance_id;
     }
 
-         public void setInstance_id(String instance_id) {
+    public void setInstance_id(String instance_id) {
         this.instance_id = instance_id;
     }
 
-        public String getInstance_type() {
-            return instance_type;
-        }
+    public String getInstance_type() {
+        return instance_type;
+    }
 
-        public void setInstance_type(String instance_type) {
-            this.instance_type = instance_type;
-        }
+    public void setInstance_type(String instance_type) {
+        this.instance_type = instance_type;
+    }
 
-        public String getInstance_owner() {
-            return instance_owner;
-        }
+    public String getIp_address() {
+        return ip_address;
+    }
 
-        public void setInstance_owner(String instance_owner) {
-            this.instance_owner = instance_owner;
-        }
+    public void setIp_address(String ip_address) {
+        this.ip_address = ip_address;
+    }
 
-        public Date getExpirationDate() {
-            return expirationDate;
-        }
+    public String getIp_public() {
+        return ip_public;
+    }
 
-        public void setExpirationDate(Date expirationDate) {
-            this.expirationDate = expirationDate;
-        }
+    public void setIp_public(String ip_public) {
+        this.ip_public = ip_public;
+    }
 
-        public Date getTerminationDate() {
-            return terminationDate;
-        }
+    public String getKeyName() {
+        return keyName;
+    }
 
-        public void setTerminationDate(Date terminationDate) {
-            this.terminationDate = terminationDate;
-        }
+    public void setKeyName(String keyName) {
+        this.keyName = keyName;
+    }
 
-        public String getPurpose() {
-            return purpose;
-        }
+    public String getCloud() {
+        return cloud;
+    }
 
-        public void setPurpose(String purpose) {
-            this.purpose = purpose;
-        }
+    public void setCloud(String cloud) {
+        this.cloud = cloud;
+    }
 
-        public String getProject() {
-            return project;
-        }
+    public String getStatus() {
+        return status;
+    }
 
-        public void setProject(String project) {
-            this.project = project;
-        }
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-        public String getEnvironment() {
-            return environment;
-        }
+    public TagsModel getTags() {
+        return tags;
+    }
 
-        public void setEnvironment(String environment) {
-            this.environment = environment;
-        }
-
-        public String getIp_address() {
-            return ip_address;
-        }
-
-        public void setIp_address(String ip_address) {
-            this.ip_address = ip_address;
-        }
-
-        public String getIp_public() {
-            return ip_public;
-        }
-
-        public void setIp_public(String ip_public) {
-            this.ip_public = ip_public;
-        }
-
-        public String getKeyName() {
-            return keyName;
-        }
-
-        public void setKeyName(String keyName) {
-            this.keyName = keyName;
-        }
-
-        public String getCloud() {
-            return cloud;
-        }
-
-        public void setCloud(String cloud) {
-            this.cloud = cloud;
-        }
-
-        public String getStatus() {
-            return status;
-        }
-
-        public void setStatus(String status) {
-            this.status = status;
-        }
-
-    @Override
-    public String toString() {
-        return "CatalogModel{" +
-                ", instance_id='" + instance_id + '\'' +
-                ", instance_type='" + instance_type + '\'' +
-                ", instance_owner='" + instance_owner + '\'' +
-                ", expirationDate='" + expirationDate + '\'' +
-                ", terminationDate='" + terminationDate + '\'' +
-                ", purpose='" + purpose + '\'' +
-                ", project='" + project + '\'' +
-                ", environment='" + environment + '\'' +
-                ", ip_address='" + ip_address + '\'' +
-                ", ip_public='" + ip_public + '\'' +
-                ", keyName='" + keyName + '\'' +
-                ", cloud='" + cloud + '\'' +
-                ", status='" + status + '\'' +
-                '}';
+    public void setTags(TagsModel tags) {
+        this.tags = tags;
     }
 }
