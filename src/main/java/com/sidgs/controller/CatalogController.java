@@ -43,6 +43,7 @@ public class CatalogController {
     }
 
 
+
     /**
      * method to update the existing instance
      * @param catalogModel
